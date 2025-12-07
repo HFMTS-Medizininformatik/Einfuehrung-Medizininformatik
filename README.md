@@ -158,18 +158,18 @@ Teil 2: Auf die Datenbank zugreifen, Struktur nachvollziehen und Daten abrufen (
 
 ### Teil 1 - Frontend
 
-Im MRS:
+Im MRS (OpenMRS):
 - Patientin registrieren
 - Visite einplanen, durchführen und Labor-Auftrag auslösen
 
-Im LIS:
+Im LIS (SANAITE):
 - Laborauftrag entgegennehmen, ausführen und freigeben
 
-Im MRS:
+Im MRS (OpenMRS):
 - Laborergebnisse abrufen und anschauen
 - Medikamente ausgeben
 
-Im ERP
+Im ERP (Odoo):
 - Dienstleistung und Medikamente in Rechnung stellen
 
 ### Teil 2 - Backend
