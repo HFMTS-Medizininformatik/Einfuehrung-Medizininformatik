@@ -2,10 +2,13 @@
 
 Dieses Readme beschreibt...
 1) die Vorbereitung einer Windows-Maschine für die lokale Virtualisierung, 
-2) das Einrichten eines Open Source PACS, inkl. einer Orthanc Docker Container Demo und
-3) das Einrichten eines Open Source KIS, inkl. einer Ozone HIS Docker Container Demo.
-4) ein Tutorial zum Entdecken von Ozone HIS - Frontend und Backend.
+2) das Einrichten eines Open Source PACS, inkl. einer Orthanc Docker Container Demo.  
+2.1) Ein Hands-on zur Emulation einer DICOM Modalität.
 
+3) das Einrichten eines Open Source KIS, inkl. einer Ozone HIS Docker Container Demo.  
+3.1) ein Hands-on zum Entdecken von Ozone HIS - Frontend und Backend.
+
+4) Einrichten einer lokalen LLM mit Chat-Interface (aka ChatGPT), inkl. Open WebUI + Ollama Docker Container Demo.
 
 ## 1) Virtualisierung vorbereiten
 
@@ -82,6 +85,13 @@ Orthanc Docker Container Demo.
     ```
 
 
+## 2.1) DICOM Hands-on
+
+Klone das Repo: https://github.com/HFMTS-Medizininformatik/DICOM-Hands-on
+
+... und folge den Anweisungen im Readme.
+
+
 ## 3) Open Source KIS (MRS+LIS+PACS+…)
 
 Ozone HIS Docker Container Demo.
@@ -147,7 +157,7 @@ Windows-Taste drücken -> `Ubuntu` eingeben -> mit Enter bestätigen.`
     ./stop-demo.sh
     ```
 
-## 4) Ozone HIS Tutorial
+## 3.1) Ozone HIS Hands-on
 
 > Egal ob Orthanc oder einer der Komponenten des HIS-Ökosystems, alle sind Database-driven WebApps.
 
@@ -185,3 +195,20 @@ Postgres einloggen: `docker exec -it <id> sh`
 Umgebungvariablen auslesen: `printenv`
 
 Mit Pgadmin und den Zugangsdaten Datenbank durchsuchen.
+
+
+## 4) Lokale LLM (aka ChatGPT)
+
+### Installation von Open WebUI mit Ollama
+
+- Mit GPU-Unterstützung:
+`docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+
+- Für die Ausführung auf der CPU, wenn keine GPU zur Verfügung steht:
+`docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+
+> Das Chat-Interface kann nun lokal abgerufen werden: http://localhost:3000  
+> Enjoy! 😄
+
+### Einrichten von Sprachmodellen (LLMs)
+
