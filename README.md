@@ -87,12 +87,16 @@ Orthanc Docker Container Demo.
 
 ## 2.1) DICOM Hands-on
 
+> Orthanc ist eine Database-driven WebApps.
+
+**Ziel:** Nach dem DICOM-Standard eine Bilddatei versenden.
+
 Klone das Repo: https://github.com/HFMTS-Medizininformatik/DICOM-Hands-on
 
 ... und folge den Anweisungen im Readme.
 
 
-## 3) Open Source KIS (MRS+LIS+PACS+…)
+## 3) Open Source KIS (MRS+LIS+ERP)
 
 Ozone HIS Docker Container Demo.
 
@@ -159,7 +163,7 @@ Windows-Taste drücken -> `Ubuntu` eingeben -> mit Enter bestätigen.`
 
 ## 3.1) Ozone HIS Hands-on
 
-> Egal ob Orthanc oder einer der Komponenten des HIS-Ökosystems, alle sind Database-driven WebApps.
+> Wie Orthanc, auch alle anderen Komponenten eines HIS-Ökosystems sind Database-driven WebApps.
 
 **Ziel:** Open Source KIS kennenlernen.
 
@@ -199,16 +203,34 @@ Mit Pgadmin und den Zugangsdaten Datenbank durchsuchen.
 
 ## 4) Lokale LLM (aka ChatGPT)
 
+### Ressourcen
+- Website: https://ollama.com
+- Source Code (GitHub): https://github.com/ollama/ollama 
+- Source Code (GitHub): https://github.com/open-webui/open-webui 
+
 ### Installation von Open WebUI mit Ollama
 
-- Mit GPU-Unterstützung:
-`docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+- Mit GPU-Unterstützung:  
+`docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:ollama`
 
-- Für die Ausführung auf der CPU, wenn keine GPU zur Verfügung steht:
-`docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama`
+- Für die Ausführung auf der CPU, wenn keine GPU zur Verfügung steht:  
+`docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui ghcr.io/open-webui/open-webui:ollama`
 
 > Das Chat-Interface kann nun lokal abgerufen werden: http://localhost:3000  
 > Enjoy! 😄
 
 ### Einrichten von Sprachmodellen (LLMs)
 
+1. Besuche die Ollama-Website und finde eine passende LLM: https://ollama.com/search
+
+> Zum Beispiel: `llama3.2`
+
+2. Wechsle zum Terminal des Open WebUI-Containers: ```docker exec -it open-webui bash```
+
+>  Alternativ kann das Terminal auch im Docker Desktop geöffnet werden.
+
+3. Install and run the LLM: ```ollama run llama3.2```
+
+4. Öffne in einem Webbrowser das Chat-Interface: http://localhost:3000  
+
+> Du kannst nun die lokal installierte LLM verwenden.
